@@ -16,10 +16,23 @@ app.use(express.static("public"));
 
 // Use the apiRoutes file for any apiRoutes
 // Use the htmlRoutes file for all other routes
-app.use(api);
-app.use(html);
+app.use(notesRoute);
+app.use(index);
 // serve up tables page
 
 // turn on express app/server
 // API endpoints
 // Get all tables
+app.get("/", function(req, res) {
+  console.log("Inside the GET '/' route!");
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+app.post("/api/notesRoute", setNote, function(req, res) {
+  console.log("Inside the POST '/api/users' route!");
+  res.json(req.body);
+});
+
+app.listen(PORT, function() {
+  console.log("Now listening on PORT: " + PORT);
+});
