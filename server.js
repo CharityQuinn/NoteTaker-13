@@ -1,7 +1,7 @@
 //import dependencies
 var express = require("express")
-var apiRoutes = require("./routes/api");
-var htmlRoutes = require("./routes/html");
+var index = require("./routes/api/index");
+var  notesRoute = require("./routes/api/notesRoute");
 
 // create new express server
 var app = express();
@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
-// Use the apiRoutes file for any apiRoutes
-// Use the htmlRoutes file for all other routes
+// Use the notesRoute file for any apiRoutes
+// Use the index.js file for all other routes
 app.use(notesRoute);
 app.use(index);
 // serve up tables page
