@@ -1,0 +1,14 @@
+.navbar-brand {
+  background-color: lightseagreen;
+  color: blue;
+}
+
+#submit {
+  float: right;
+  background-color: lightseagreen;
+}
+
+.navbar-dark {
+  padding-left: 25px;
+  width: 100%;
+}

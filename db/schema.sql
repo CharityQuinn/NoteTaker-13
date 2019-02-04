@@ -6,5 +6,5 @@ CREATE TABLE notes(
   note_id INT AUTO_INCREMENT NOT NULL,
   note_title VARCHAR(40),
   note_text TEXT(250),
-  PRIMARY KEY (note_id);
+  PRIMARY KEY (note_id)
 );

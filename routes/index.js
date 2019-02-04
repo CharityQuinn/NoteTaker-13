@@ -1,5 +1,21 @@
-var $noteTitle = $(".note-title");
-var $noteText = $(".note-textarea");
-var $saveNoteBtn = $(".save-note");
-var $writeNoteBtn = $(".new-note");
-var $noteList = $(".list-container .list-group");
+
+const router = require("express").Router();
+const apiRoutes = require("./api");
+const htmlRoutes = require("./html");
+
+router.use("/", htmlRoutes);
+router.use("/api", apiRoutes);
+
+router.get("*", function (req, res) {
+  res.send("<h1>404 path not found!</h1>");
+});
+
+module.exports = router;
+
+
+
+
+
+
+
+module.exports = router;
