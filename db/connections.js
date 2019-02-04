@@ -13,14 +13,17 @@ if (process.env.JAWDB_URL) {
   });
 }
 
-connection.config.typCast = function(field, next) {
-  if (field.type == "TINY" && field.length == 1) {
-    return field.string() == "1"; //1 for true, 0 for false
-  }
-  console.log("Connection is " + connection);
-  return next();
-};
+// connection.config.typCast = function(field, next) {
+//   if (field.type == "TINY" && field.length == 1) {
+//     return field.string() == "1"; //1 for true, 0 for false
+//   }
+//   console.log("Connection is " + connection);
+//   return next();
+// };
 
-
+connection.connect(function (err) {
+  if(err) throw err;
+    console.log("Connection is " + connection.threadId);
+})
 
 module.exports = connection;

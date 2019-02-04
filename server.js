@@ -2,6 +2,7 @@
 var express = require("express")
 var index = require("./routes/api/index");
 var  notesRoute = require("./routes/api/notesRoute");
+var path = require("path");
 
 // create new express server
 var app = express();
@@ -17,7 +18,7 @@ app.use(express.static("public"));
 // Use the notesRoute file for any apiRoutes
 // Use the index.js file for all other routes
 app.use(notesRoute);
-app.use(index);
+// app.use(index);
 // serve up tables page
 
 // turn on express app/server
@@ -25,11 +26,12 @@ app.use(index);
 // Get all tables
 app.get("/", function(req, res) {
   console.log("Inside the GET '/' route!");
-  res.sendFile(path.join(__dirname, "./public/index.html"));
+  res.sendFile(path.join(__dirname, "/public/home.html"));
 });
 
-app.post("/api/notesRoute", setNote, function(req, res) {
-  console.log("Inside the POST '/api/users' route!");
+app.post("/api/users", function(req, res) {
+// app.post("/api/users", setNotes, function(req, res) {
+  console.log("Inside the POST '/api/notes' route!");
   res.json(req.body);
 });
 
