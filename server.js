@@ -30,7 +30,7 @@ app.get("/", function(req, res) {
 });
 
 app.post("/api/users", function(req, res) {
-// app.post("/api/users", setNotes, function(req, res) {
+
   console.log("Inside the POST '/api/notes' route!");
   res.json(req.body);
 });
