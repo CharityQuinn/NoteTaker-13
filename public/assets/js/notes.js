@@ -1,40 +1,65 @@
 $(document).ready(function () {
 
-  $("#submit").on("click", function (e) {
-    event.preventDefault();
-    const noteData = {
-      noteTitle: $("#note_title").val(),
-      noteText: $("#note_text").val()
-    }
+  $.ajax({
+    url: "/api/notes",
+    method: "GET",
 
-    
-    $.ajax({
-      url: "/api/notes",
-      method: "POST",
-      data: noteData // this is req.body
-      
+  }).then(function (noteData2) {
+    console.log(noteData2);
+    for (let i = 0; i < noteData2.length; i++) {
 
-    }).then(function (noteData) {
-      console.log(this);
-      noteData.forEach((note, i) => {
+      // create list group item and add info to it
+      const $li = $("<li class='list-group-item'>");
+      const $ui = $("<li class='list-group-item'>");
 
-        // create list group item and add info to it
-        const $li = $("<li class='list-group-item'>");
-
-        $li
-          .append(`<h4>Note Title ${i + 1}: ${notes.note_title}</h4>`)
-          .append(`<p>Note Body: ${notes.note_text}</p>`)
+      $li
+        .append(`<h4>Title ${i + 1}: ${noteData2[i].note_title}</h4>`)
+     // $ui
+        .append(`<p>${noteData2[i].note_text}</p>`)
 
 
-        $("#noteList").append($li);
+      $("#note-title").append($li);
+      //$("#note-text").append($ui);
 
-      });
-      // package up data from form
-
-    });
-
-
+    };
   })
+
 })
 
-console.log("This is submit button working");
+$("#submit").on("click", function (e) {
+  event.preventDefault();
+  const noteData = {
+    note_title: $("#form2").val(),
+    note_text: $("#form1").val()
+  }
+
+
+  //console.log("This is submit button working " + noteData);
+  console.log(noteData);
+  $.ajax({
+    url: "/api/notes",
+    method: "POST",
+    data: noteData // this is req.body
+
+
+  }).then(function (noteData2) {
+    console.log(noteData2);
+    noteData2.forEach((note, i) => {
+      console.log(note);
+      // create list group item and add info to it
+      const $li = $("<li class='list-group-item'>");
+
+      $li
+        .append(`<h4>Note Title ${i + 1}: ${note.note_title}</h4>`)
+        .append(`<p>Note Body: ${note.note_text}</p>`)
+
+
+      $("#noteList").append($li);
+
+    });
+    // package up data from form
+
+  });
+
+
+})
