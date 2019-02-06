@@ -1,22 +1,21 @@
 $(document).ready(function () {
 
   $("#submit").on("click", function (e) {
-
+    event.preventDefault();
     const noteData = {
       noteTitle: $("#note_title").val(),
       noteText: $("#note_text").val()
     }
 
-
-
-    event.preventDefault();
+    
     $.ajax({
       url: "/api/notes",
       method: "POST",
       data: noteData // this is req.body
+      
 
     }).then(function (noteData) {
-
+      console.log(this);
       noteData.forEach((note, i) => {
 
         // create list group item and add info to it
@@ -29,18 +28,11 @@ $(document).ready(function () {
 
         $("#noteList").append($li);
 
-
       });
       // package up data from form
 
-
     });
 
-
-
-
-    // check to see if dbResponse.isWaiting is true or false
-    console.log(dbResponse);
 
   })
 })

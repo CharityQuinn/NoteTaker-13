@@ -4,8 +4,9 @@ var connection = require("../../db/connections");
 router
   .get("/api/notes", function (req, res) {
     connection.query("SELECT * FROM notes", function (err, result) {
+      console.log("The get result is "+ result);
       if (err) throw err;
-
+      console.log(connection);
       res.json(result);
     });
   });
@@ -13,7 +14,9 @@ router
 
 // Save a new note
 router.post("/api/notes", function (req, res) {
-  connection.query("INSERT INTO notes SET ?", req.body, function (err, result) {
+  var connect = "INSERT INTO notes SET ?";
+  connection.query(connect, req.body, function (err, result) {
+    console.log("The post result is "+ result);
     if (err) throw err;
 
     res.json(result);
