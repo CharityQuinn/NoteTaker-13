@@ -16,7 +16,11 @@ if (process.env.JAWSDB_URL) {
 
 
 connection.connect(function (err) {
-  if(err) throw err;
+  if (err) {
+    console.log(err);
+    return res.status(400).json(err);
+  }
+ 
     console.log("Connection is " + connection.threadId);
 })
 
