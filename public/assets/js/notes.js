@@ -14,7 +14,7 @@ $(document).ready(function () {
 
       $li
         .append(`<h4>Title ${i + 1}: ${noteData2[i].note_title}</h4>`)
-     // $ui
+        // $ui
         .append(`<p>${noteData2[i].note_text}</p>`)
 
 
@@ -44,22 +44,19 @@ $("#submit").on("click", function (e) {
 
   }).then(function (noteData2) {
     console.log(noteData2);
-    noteData2.forEach((note, i) => {
-      console.log(note);
-      // create list group item and add info to it
-      const $li = $("<li class='list-group-item'>");
 
-      $li
-        .append(`<h4>Note Title ${i + 1}: ${note.note_title}</h4>`)
-        .append(`<p>Note Body: ${note.note_text}</p>`)
+    
+    // create list group item and add info to it
+    const $li = $("<li class='list-group-item'>");
+
+    $li
+      .append(`<h4>Note Title ${i + 1}: ${noteData2.note_title}</h4>`)
+      .append(`<p>Note Body: ${noteData2.note_text}</p>`)
 
 
-      $("#noteList").append($li);
-
-    });
-    // package up data from form
+    $("#noteList").append($li);
 
   });
+  // package up data from form
 
-
-})
+});
