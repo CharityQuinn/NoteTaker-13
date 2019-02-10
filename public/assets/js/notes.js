@@ -43,15 +43,15 @@ $("#submit").on("click", function (e) {
 
 
   }).then(function (noteData2) {
-    console.log(noteData2);
-
-    
+        
     // create list group item and add info to it
     const $li = $("<li class='list-group-item'>");
 
     $li
       .append(`<h4>Note Title ${i + 1}: ${noteData2.note_title}</h4>`)
+      .append(`<button delete btn btn-danger></button>`)
       .append(`<p>Note Body: ${noteData2.note_text}</p>`)
+      
 
 
     $("#noteList").append($li);
@@ -60,3 +60,4 @@ $("#submit").on("click", function (e) {
   // package up data from form
 
 });
+
