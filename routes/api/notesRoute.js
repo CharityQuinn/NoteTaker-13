@@ -4,7 +4,7 @@ var connection = require("../../db/connections");
 router
   .get("/api/notes", function (req, res) {
     connection.query("SELECT * FROM notes", function (err, result) {
-      console.log("The get result is "+ result);
+      
       if (err) throw err;
       console.log(connection);
       res.json(result);

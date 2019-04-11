@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const htmlRoutes = require("./index");
+const viewRoutes = require("./index");
 
-router.use("/", htmlRoutes);
+router.use("/", viewRoutes);
 
 var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");

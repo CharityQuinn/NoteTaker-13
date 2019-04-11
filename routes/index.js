@@ -1,9 +1,9 @@
 //import dependencies
 const router = require("express").Router();
 const apiRoutes = require("./api");  // get index from api folder
-const htmlRoutes = require("./html"); // get index from the html folder
+const viewRoutes = require("./html"); // get index from the html folder
 
-router.use("/", htmlRoutes);
+router.use("/", viewRoutes);
 router.use("/api", apiRoutes);
 
 router.get("*", function (req, res) {
